@@ -7,15 +7,15 @@ $app['debug'] = false;
 
 // Translation
 $app['locale_fallbacks'] = array('en');
-$app['translator.cache_dir'] = APP_BASE_DIR.'storage/cache/translation';
+$app['translator.cache_dir'] = APP_BASE_DIR.'storage/cache/prod/translation';
 
 // Doctrine DBAL
 $app['db.options'] = array(
     'driver' => 'pdo_mysql',
     'host' => '127.0.0.1',
-    'dbname' => 'silex',
+    'dbname' => 'qwi',
     'user' => 'root',
-    'password' => 'root',
+    'password' => '',
     'charset' => 'utf8'
 );
 
@@ -25,13 +25,13 @@ $app['orm.em.options'] =  array(
 		// Using actual filesystem paths
 		array(
 				'type' => 'annotation',
-				'namespace' => 'app\Entity',
-				'path' => APP_BASE_DIR.'src/app/Entity'
+				'namespace' => 'User\Entity',
+				'path' => APP_BASE_DIR.'src/User/Entity'
 		)
 	)
 );
 
-$app['orm.proxies_dir'] = APP_BASE_DIR.'storage/cache/doctrine/orm/Proxies';
+$app['orm.proxies_dir'] = APP_BASE_DIR.'storage/cache/prod/doctrine/orm/Proxies';
 $app['orm.auto_generate_proxies'] = $app['debug'];
 
 // Templates Engine
@@ -40,11 +40,13 @@ $app['twig.path'] = array(
 );
 
 $app['twig.options'] = array(
-	'cache' => APP_BASE_DIR.'storage/cache/twig'
+	'cache' => APP_BASE_DIR.'storage/cache/prod/twig'
 );
 
 // Assets
 $app['assets.version'] = 'v1';
+//$app['assets.base_path'] = APP_BASE_DIR.'Ressources/public';
+//$app['assets.base_urls'] = 'http//localhost:8888/public';
 
 // Log
 $app['monolog.logfile'] = APP_BASE_DIR.'storage/logs/prod.log';
